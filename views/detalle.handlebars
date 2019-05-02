@@ -12,18 +12,33 @@
 
 <body>
     {{> header}}
-    
-    {{#each producto}}
-        <h1>{{tipo}} "{{nombre}}"</h1>
-        <p>Escoge la cantidad que desees y añade a tu carrito</p>
-        <div>
-            <img src="{{url}}" alt="{{nombre}}" style="width: 100%;">
-        </div>
-        <p>${{precio}}</p>
-        <input type="number" min="1" max="5">
-        <button>añadir al carrrito</button>
-    {{/each}}
+    <section class="producto">
+        {{#each producto}}
+            <h1>{{tipo}} "{{nombre}}"</h1>
+            <p>Escoge la cantidad que desees y añade a tu carrito</p>
+            <div>
+                <img src="/{{url}}" alt="{{nombre}}" style="width: 40%;">
+            </div>
+            <h4>Precio: ${{precio}}</h4>
+            <input type="number" min="1" max="5" placeholder="0">
+            <button>añadir al carrrito</button>
+        {{/each}}
+    </section>
 
+    <section class="productoo">
+        {{#each producto}}
+            <div>
+                <img src="/{{url}}" alt="{{nombre}}" style="width: 40%;">
+            </div>
+            <article>
+                <h1>{{tipo}} "{{nombre}}"</h1>
+                <p>Escoge la cantidad que desees y añade a tu carrito</p>
+                <h4>Precio: ${{precio}}</h4>
+                <input type="number" min="1" max="5" placeholder="0">
+                <button>añadir al carrrito</button>
+            </article>
+        {{/each}}
+    </section>
     {{> advert}}
 </body>
 

@@ -46,7 +46,7 @@ app.get('/store', function(request,response){
         docs.sort(function(a, b){return 0.5 - Math.random()});
 
         var contexto = {
-            tipos: [{tipo: "ENTRADAS", array:docs.filter(doc => doc.tipo == "entrada")},{tipo: "DISFRACES", array:docs.filter(doc => doc.tipo == "disfraz")},{tipo: "ACCESORIOS", array:docs.filter(doc => doc.tipo == "mascara")},{tipo: "TE PUEDE INTERESAR", array:docs.slice(3,6)}],
+            tipos: [{tipo: "ENTRADAS", array:docs.filter(doc => doc.tipo == "ENTRADA")},{tipo: "DISFRACES", array:docs.filter(doc => doc.tipo == "DISFRAZ")},{tipo: "ACCESORIOS", array:docs.filter(doc => doc.tipo == "MASCARA")},{tipo: "TE PUEDE INTERESAR", array:docs.slice(3,6)}],
             productos: docs 
         };
         response.render('store', contexto);
