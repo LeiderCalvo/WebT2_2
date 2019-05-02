@@ -11,23 +11,24 @@
 </head>
 
 <body>
-    <section class="menu">
-        <div class="hamburguesa">
-            <img src="/Imagenes/T2/MOVIL/menu.png" alt="" style="width: 100%;">
-        </div>
-        <div class="logo">
-            <img src="/Imagenes/T2/MOVIL/logo.png" style="width: 100%;" alt="">
-        </div>
-
-        <h2 class="nav">ATRACCIONES</h2>
-        <h2 class="nav">GALERIA</h2>
-        <h2 class="nav">PLANEA TU EXPERIENCIA</h2>
-
-        <div>
-            <img src="/Imagenes/T2/MOVIL/carrito.png" alt="" style="width: 100%;">
-        </div>
-    </section>
-
+    {{> header}}
     
+    {{#each producto}}
+        <h1>{{tipo}} "{{nombre}}"</h1>
+        <p>Escoge la cantidad que desees y añade a tu carrito</p>
+        <div>
+            <img src="{{url}}" alt="{{nombre}}" style="width: 100%;">
+        </div>
+        <p>${{precio}}</p>
+        <input type="number" min="1" max="5">
+        <button>añadir al carrrito</button>
+    {{/each}}
+
+    {{> advert}}
 </body>
+
+<footer>
+    {{> foot }}
+</footer>
+
 </html>

@@ -11,22 +11,7 @@
 </head>
 
 <body>
-    <section class="menu">
-        <div class="hamburguesa">
-            <img src="Imagenes/T2/MOVIL/menu.png" alt="" style="width: 100%;">
-        </div>
-        <div class="logo">
-            <img src="Imagenes/T2/MOVIL/logo.png" style="width: 100%;" alt="">
-        </div>
-
-        <h2 class="nav">ATRACCIONES</h2>
-        <h2 class="nav">GALERIA</h2>
-        <h2 class="nav">PLANEA TU EXPERIENCIA</h2>
-
-        <div>
-            <img src="Imagenes/T2/MOVIL/carrito.png" alt="" style="width: 100%;">
-        </div>
-    </section>
+    {{> header}}
 
     <section class="banner">
         <img src="Imagenes/T2/MOVIL/banner.png" style="width: 100%;" alt="">
@@ -50,22 +35,11 @@
         {{/each}}
     </section>
 
-    <section class="advert">
-        <h2>ADVERTENCIA</h2>
-        <p> Este evento no es recomendado para <br />personas menores a los 13 años de
-            edad</p>
-    </section>
+    {{> advert}}
 
 </body>
 <footer>
-    <div>
-        <h2>CONTACTENOS</h2>
-        <h2>TERMINOS DE USO</h2>
-        <h2>COPYRIGHT Y MARCA REGISTRADA</h2>
-        <h2>POLÍTICAS DE PREVACIDAD</h2>
-        <h2>DERECHOS DE CA</h2>
-        <h2>UBICADOS EN LOS ANGELES CA</h2>
-    </div>
+    {{> foot }}
 </footer>
 <script src="scripts/store.js"></script>
 

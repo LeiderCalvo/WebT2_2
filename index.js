@@ -1,6 +1,7 @@
     
 const express = require('express');
 const hbs = require('express-handlebars');
+const Handlebars = require('handlebars');
 const app = express();
 
 const bodyParser = require('body-parser');
@@ -72,5 +73,38 @@ app.get('/detalle', function(request, response){
         //response.send(contexto.producto);
     });
 });
+
+Handlebars.registerPartial('foot', `<div>
+<h2>CONTACTENOS</h2>
+<h2>TERMINOS DE USO</h2>
+<h2>COPYRIGHT Y MARCA REGISTRADA</h2>
+<h2>POLÍTICAS DE PREVACIDAD</h2>
+<h2>DERECHOS DE CA</h2>
+<h2>UBICADOS EN LOS ANGELES CA</h2>
+</div>`);
+
+Handlebars.registerPartial('advert',
+`<section class="advert">
+    <h2>ADVERTENCIA</h2>
+    <p> Este evento no es recomendado para <br />personas menores a los 13 años de edad</p>
+</section>`);
+
+Handlebars.registerPartial('header', `<section class="menu">
+<div class="hamburguesa">
+    <img src="/Imagenes/T2/MOVIL/menu.png" alt="" style="width: 100%;">
+</div>
+<div class="logo">
+    <img src="/Imagenes/T2/MOVIL/logo.png" style="width: 100%;" alt="">
+</div>
+
+<h2 class="nav">ATRACCIONES</h2>
+<h2 class="nav">GALERIA</h2>
+<h2 class="nav">PLANEA TU EXPERIENCIA</h2>
+
+<div>
+    <img src="/Imagenes/T2/MOVIL/carrito.png" alt="" style="width: 100%;">
+</div>
+</section>`);
+
 
 app.listen(5500);
