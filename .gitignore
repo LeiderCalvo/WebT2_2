@@ -1,0 +1,8 @@
+node_modules
+package-lock.json
+public/styles/store.css.map
+public/styles/store.css
+public/styles/home.css.map
+public/styles/home.css
+public/styles/detalle.css.map
+public/styles/detalle.css

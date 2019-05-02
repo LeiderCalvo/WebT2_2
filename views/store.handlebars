@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Halloween Horror Nights</title>
+    <link href="styles/store.css" rel="stylesheet" type="text/css" >
+    <link href="https://fonts.googleapis.com/css?family=Asap:400,700" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <section class="menu">
+        <div class="hamburguesa">
+            <img src="Imagenes/T2/MOVIL/menu.png" alt="" style="width: 100%;">
+        </div>
+        <div class="logo">
+            <img src="Imagenes/T2/MOVIL/logo.png" style="width: 100%;" alt="">
+        </div>
+
+        <h2 class="nav">ATRACCIONES</h2>
+        <h2 class="nav">GALERIA</h2>
+        <h2 class="nav">PLANEA TU EXPERIENCIA</h2>
+
+        <div>
+            <img src="Imagenes/T2/MOVIL/carrito.png" alt="" style="width: 100%;">
+        </div>
+    </section>
+
+    <section class="banner">
+        <img src="Imagenes/T2/MOVIL/banner.png" style="width: 100%;" alt="">
+    </section>
+
+    <section class="productos">
+        {{#each tipos}}
+        <article class="preCollapsible">
+            <button class="collapsible">{{tipo}}</button>
+            <div class="content" style="display: none;">
+                {{#each array }}
+                <div data-name={{nombre}} class="producto">
+                    <article>
+                        <img src="{{url}}" alt="{{nombre}}" style="width: 100%;">
+                    </article>
+                    <h2>{{nombre}}</br>$ {{precio}}</h2>
+                </div>
+                {{/each}}
+            </div>
+        </article>
+        {{/each}}
+    </section>
+
+    <section class="advert">
+        <h2>ADVERTENCIA</h2>
+        <p> Este evento no es recomendado para <br />personas menores a los 13 años de
+            edad</p>
+    </section>
+
+</body>
+<footer>
+    <div>
+        <h2>CONTACTENOS</h2>
+        <h2>TERMINOS DE USO</h2>
+        <h2>COPYRIGHT Y MARCA REGISTRADA</h2>
+        <h2>POLÍTICAS DE PREVACIDAD</h2>
+        <h2>DERECHOS DE CA</h2>
+        <h2>UBICADOS EN LOS ANGELES CA</h2>
+    </div>
+</footer>
+<script src="scripts/store.js"></script>
+
+</html>
