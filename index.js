@@ -54,27 +54,41 @@ app.get('/store', function(request,response){
     });
 });
 
+
 app.get('/detalle', function(request, response){
     const coleccion = db.collection('productos');
     var prod = request.query.producto;
-    coleccion.find({
-        nombre:{
-            '$eq': prod
-        }
-    }).toArray(function(err, docs){
+    coleccion.find({}).toArray(function(err, doc){
         if(err){
             console.log(err);
             response.send(err);
             return;
         } 
+        doc.sort(function(a, b){return 0.5 - Math.random()});
 
-        var contexto = {producto: docs,};
-        response.render('detalle', contexto); 
+        coleccion.find({
+            nombre:{
+                '$eq': prod
+            }
+        }).toArray(function(err,docs){
+            if(err){
+                console.log(err);
+                response.send(err);
+                return;
+            }
+    
+            var contexto = {
+                productos: doc.slice(3,6),
+                producto: docs
+            };
+            response.render('detalle', contexto); 
         //response.send(contexto.producto);
+        });
     });
 });
 
 app.get('/checkout', function(request, response){
+    const coleccion2 = db.collection('productos');
     const coleccion = db.collection('carrito');
     coleccion.find({}).toArray(function(err, docs){
         if(err){
@@ -83,9 +97,21 @@ app.get('/checkout', function(request, response){
             return;
         } 
 
-        var contexto = { array: docs};
-        response.render('checkout', contexto);
-        //response.send(contexto.array);
+        coleccion2.find({}).toArray(function(err,doc){
+            if(err){
+                console.log(err);
+                response.send(err);
+                return;
+            }
+            doc.sort(function(a, b){return 0.5 - Math.random()});
+    
+            var contexto = {
+                productos: doc.slice(3,6),
+                array: docs
+            };
+            response.render('checkout', contexto);
+            //response.send(contexto.array);
+        });
     });
 });
 
@@ -144,6 +170,18 @@ Handlebars.registerPartial('header', `<section class="menu">
     <img src="/Imagenes/T2/MOVIL/carrito.png" alt="" style="width: 100%;">
 </div>
 </section>`);
+
+Handlebars.registerPartial('recomendados', `<h1 class="interes">Te puede interesar</h1>
+<div class="content">
+    {{#each productos}}
+    <div data-name={{nombre}} class="producto">
+        <article>
+            <img src="/{{url}}" alt="{{nombre}}" style="width: 100%;">
+        </article>
+        <h2>{{nombre}}</br>$ {{precio}}</h2>
+    </div>
+    {{/each}}
+</div>`);
 
 
 app.listen(5500);

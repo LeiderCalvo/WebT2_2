@@ -12,7 +12,7 @@
 
 <body>
     {{> header}}
-    <section class="producto">
+    <section class="product">
         {{#each producto}}
         <h1>{{tipo}} "{{nombre}}"</h1>
         <p>Escoge la cantidad que desees y añade a tu carrito</p>
@@ -39,6 +39,7 @@
         </article>
         {{/each}}
     </section>
+    {{> recomendados}}
     {{> advert}}
 </body>
 

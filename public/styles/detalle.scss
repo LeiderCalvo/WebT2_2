@@ -1,6 +1,6 @@
 @import 'general';
 
-.producto {
+.product {
     width: 100%;
     padding: 30px;
 
@@ -67,5 +67,5 @@
 }
 
 @media screen and (min-width:640px) {
-    .producto{display: none;}
+    .product{display: none;}
 }
