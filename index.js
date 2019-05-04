@@ -68,9 +68,48 @@ app.get('/detalle', function(request, response){
             return;
         } 
 
-        var contexto = {producto: docs};
+        var contexto = {producto: docs,};
         response.render('detalle', contexto); 
         //response.send(contexto.producto);
+    });
+});
+
+app.get('/checkout', function(request, response){
+    const coleccion = db.collection('carrito');
+    coleccion.find({}).toArray(function(err, docs){
+        if(err){
+            console.log(err);
+            response.send(err);
+            return;
+        } 
+
+        var contexto = { array: docs};
+        response.render('checkout', contexto);
+        //response.send(contexto.array);
+    });
+});
+
+app.post('/api/AgregarAlCarrito', function(request, response){
+    const coleccion = db.collection('productos');
+    const coleccion2 = db.collection('carrito');
+    let titulo = request.body.titulo;
+    let cant = request.body.cantidad;
+
+    coleccion.find({
+        nombre:{
+            '$eq' : titulo
+        }
+    })
+    .toArray(function(err, doc){ 
+        if(err){
+            console.log(err);
+            response.send(err);
+            return;
+        } 
+        for (let i = 0; i < parseInt(cant); i++) {
+            console.log("insertò"+doc);
+            coleccion2.insert(doc);
+        }
     });
 });
 

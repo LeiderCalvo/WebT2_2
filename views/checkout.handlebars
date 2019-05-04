@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Halloween Horror Nights</title>
+    <link rel="stylesheet" type="text/css" href="/styles/checkout.css">
+    <link href="https://fonts.googleapis.com/css?family=Asap:400,700" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    {{> header}}
+
+    <h1 class="titulo">TU CARRITO</h1>
+    <div class="respon">
+        <div class="details">
+            {{#each array}}
+            <div class="product">
+                <div class="imgContent">
+                    <img src="/{{url}}" alt="{{nombre}}" style="height: 100%;">
+                </div>
+                <div class="infoContent">
+                    <h3>{{tipo}} "{{nombre}}"</h3>
+                    <p>Tipo: {{tipo}}</p>
+                    <p>Estilo: {{estilo}}</p>
+                    <p>Precio: {{precio}}</p>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        <div class="sumary">
+            <h1 class="pedido">Completar pedido</h1>
+            <div class="elements">
+                <ul>
+                    <li>
+                        <h4>{{array.length}} producto</h4>
+                        <p></p>
+
+                    </li>
+                    <li>
+                        <h4>Total a pagar</h4>
+                        <p>$200.000</p>
+
+                    </li>
+                    <li>
+                        <h4>Envio</h4>
+                        <p>Gratis</p>
+
+                    </li>
+                </ul>
+            </div>
+            <div class="centrador"><Button>CONTINUAR</Button></div>
+        </div>
+
+    </div>
+    {{> advert}}
+
+</body>
+<footer>
+    {{> foot}}
+</footer>
+
+</html>

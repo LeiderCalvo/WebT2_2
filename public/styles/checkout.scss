@@ -1,0 +1,139 @@
+@import 'general';
+
+.titulo {
+    font-size: 30px;
+    margin: 30px 0 20px 20px;
+}
+
+.product {
+    margin: 30px 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 250px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid gray;
+
+    .imgContent {
+        height: 100%;
+        @include centrado();
+        align-items: flex-end;
+        margin: 30px 30px;
+    }
+
+    .infoContent {
+        height: 100%;
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        justify-content: center;
+        align-items: flex-start;
+        margin-right: 30px;
+
+        h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        * {
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+
+        hr {
+            width: 200px;
+        }
+    }
+}
+
+.pedido {
+    font-size: 30px;
+    margin: 30px;
+    margin-top: 50px;
+}
+
+.elements {
+    @include centrado();
+    width: 100%;
+    padding: 0 30px;
+    justify-content: flex-start;
+
+    * {
+        list-style: none;
+    }
+
+    ul {
+        width: 100%;
+
+        li {
+            width: 100%;
+            color: red;
+            text-align: start;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid gray;
+        }
+    }
+}
+.centrador{
+    width: 100%;
+    padding: 20px 0;
+    @include centrado();
+    Button {
+        border: none;
+        padding: 10px 15px;
+        background-color: #C19929;
+    }
+}
+
+@media screen and (max-width:640px) {
+    .respon{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        .details{
+            width: 100%;
+        }
+        .sumary{
+            width: 100%;
+            background-color: none;
+        }
+    }
+
+    html body {
+        background-color: red;
+    }
+}
+
+@media screen and (min-width:640px) {
+    .pedido{text-align: center}
+    .respon{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        max-height: 320px; 
+        overflow: hidden;
+        .details{
+            width: 55%;
+            overflow: hidden;
+            overflow-y: auto;
+            &:hover{overflow-y: auto}
+            &::-webkit-scrollbar {width: 5px;}
+            &::-webkit-scrollbar-track {background: #888;}
+            &::-webkit-scrollbar-thumb {background: #888;}
+            &::-webkit-scrollbar-thumb:hover {background: #f2f2f2;}
+        }
+        .sumary{
+            width: 40%;
+            background-color: #1A334D;
+        }
+    }
+}

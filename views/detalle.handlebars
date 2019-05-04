@@ -14,29 +14,29 @@
     {{> header}}
     <section class="producto">
         {{#each producto}}
-            <h1>{{tipo}} "{{nombre}}"</h1>
-            <p>Escoge la cantidad que desees y añade a tu carrito</p>
-            <div>
-                <img src="/{{url}}" alt="{{nombre}}" style="width: 40%;">
-            </div>
-            <h4>Precio: ${{precio}}</h4>
-            <input type="number" min="1" max="5" placeholder="0">
-            <button>añadir al carrrito</button>
+        <h1>{{tipo}} "{{nombre}}"</h1>
+        <p>Escoge la cantidad que desees y añade a tu carrito</p>
+        <div>
+            <img src="/{{url}}" alt="{{nombre}}" style="width: 40%;">
+        </div>
+        <h4>Precio: ${{precio}}</h4>
+        <input class="cantidad" type="number" min="1" max="5" value="1" onchange="cambiando(this.value)">
+        <button data-name={{nombre}} class="btnAñadir">añadir al carrrito</button>
         {{/each}}
     </section>
 
     <section class="productoo">
         {{#each producto}}
-            <div>
-                <img src="/{{url}}" alt="{{nombre}}" style="width: 40%;">
-            </div>
-            <article>
-                <h1>{{tipo}} "{{nombre}}"</h1>
-                <p>Escoge la cantidad que desees y añade a tu carrito</p>
-                <h4>Precio: ${{precio}}</h4>
-                <input type="number" min="1" max="5" placeholder="0">
-                <button>añadir al carrrito</button>
-            </article>
+        <div>
+            <img src="/{{url}}" alt="{{nombre}}" style="width: 40%;">
+        </div>
+        <article>
+            <h1>{{tipo}} "{{nombre}}"</h1>
+            <p>Escoge la cantidad que desees y añade a tu carrito</p>
+            <h4>Precio: ${{precio}}</h4>
+            <input class="cantidad2" type="number" min="1" max="5" value="1" onchange="cambiando2(this.value)">
+            <button data-name={{nombre}} class="btnAñadir">añadir al carrrito</button>
+        </article>
         {{/each}}
     </section>
     {{> advert}}
@@ -45,5 +45,18 @@
 <footer>
     {{> foot }}
 </footer>
+<script src="/scripts/detalle.js"></script>
+<script>
+function cambiando(val) {
+    var y = document.querySelector(".cantidad");
+    var x = document.querySelector(".cantidad2");
+    x.value = y.value;
+}
 
+function cambiando2(val) {
+    var x = document.querySelector(".cantidad2");
+    var y = document.querySelector(".cantidad");
+    y.value = x.value;
+}
+</script>
 </html>
