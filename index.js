@@ -54,6 +54,56 @@ app.get('/store', function(request,response){
     });
 });
 
+app.get('/store/estilo', function(request,response){
+    const coleccion = db.collection('productos');
+    var estilo = request.query.style;
+
+    coleccion.find({
+        estilo:{
+            '$eq' : estilo
+        }
+    }).toArray(function(err,docs){
+        if(err){
+            console.log(err);
+            response.send(err);
+            return;
+        }
+        docs.sort(function(a, b){return 0.5 - Math.random()});
+
+        var contexto = {
+            tipos: [{tipo: "ENTRADAS", array:docs.filter(doc => doc.tipo == "ENTRADA")},{tipo: "DISFRACES", array:docs.filter(doc => doc.tipo == "DISFRAZ")},{tipo: "ACCESORIOS", array:docs.filter(doc => doc.tipo == "MASCARA")},{tipo: "TE PUEDE INTERESAR", array:docs.slice(3,6)}],
+            productos: docs 
+        };
+        response.render('store', contexto);
+        //response.send(contexto.productos);
+    });
+});
+
+app.get('/store/precio', function(request,response){
+    const coleccion = db.collection('productos');
+    var precio = request.query.precio;
+
+    coleccion.find({
+        precio:{
+            '$gt' : parseInt(precio)
+        }
+    }).toArray(function(err,docs){
+        if(err){
+            console.log(err);
+            response.send(err);
+            return;
+        }
+        docs.sort(function(a, b){return 0.5 - Math.random()});
+
+        var contexto = {
+            tipos: [{tipo: "ENTRADAS", array:docs.filter(doc => doc.tipo == "ENTRADA")},{tipo: "DISFRACES", array:docs.filter(doc => doc.tipo == "DISFRAZ")},{tipo: "ACCESORIOS", array:docs.filter(doc => doc.tipo == "MASCARA")},{tipo: "TE PUEDE INTERESAR", array:docs.slice(3,6)}],
+            productos: docs 
+        };
+        response.render('store', contexto);
+        //response.send(contexto.productos);
+    });
+});
+
 
 app.get('/detalle', function(request, response){
     const coleccion = db.collection('productos');
@@ -139,6 +189,29 @@ app.post('/api/AgregarAlCarrito', function(request, response){
     });
 });
 
+app.post('/api/addSolicitud', function (request, response) {
+    const coleccion = db.collection('solicitudes');
+    const coleccion2 = db.collection('carrito');
+    
+    coleccion2.find({}).toArray(function(err, docs){
+        if(err){
+            console.log(err);
+            response.send(err);
+            return;
+        } 
+ 
+        coleccion.insert({
+            cuenta: Math.random()*20000000 + 5098590,
+            cedula: Math.random()*20000000 + 5098590,
+            direccion: "Icesi la manda mas",
+            nombre: "Usuario actual",
+            productos: docs
+        });
+        response.send("Nueva solicitud creada");
+    });
+
+});
+
 Handlebars.registerPartial('foot', `<div>
 <h2>CONTACTENOS</h2>
 <h2>TERMINOS DE USO</h2>
@@ -166,7 +239,7 @@ Handlebars.registerPartial('header', `<section class="menu">
 <h2 class="nav">GALERIA</h2>
 <h2 class="nav">PLANEA TU EXPERIENCIA</h2>
 
-<div>
+<div class="shop">
     <img src="/Imagenes/T2/MOVIL/carrito.png" alt="" style="width: 100%;">
 </div>
 </section>`);

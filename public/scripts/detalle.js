@@ -27,11 +27,21 @@
 
     var x= document.querySelectorAll(".producto");
   
-  for (let i = 0; i < x.length; i++) {
-     x[i].addEventListener('click', function (params) {
-         var name = x[i].getAttribute('data-name');
-         console.log(name);
-         window.location.href = "/detalle/?producto="+name;
-     });
-  }
+    for (let i = 0; i < x.length; i++) {
+        x[i].addEventListener('click', function (params) {
+            var name = x[i].getAttribute('data-name');
+            console.log(name);
+            window.location.href = "/detalle/?producto="+name;
+        });
+    }
+
+    var y= document.querySelector(".shop");
+    y.addEventListener('click', function (params) {
+        window.location.href = "/checkout";
+    });
+
+    var y= document.querySelector(".logo");
+    y.addEventListener('click', function (params) {
+        window.location.href = "/";
+    });
    });

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Halloween Horror Nights</title>
-    <link href="styles/store.css" rel="stylesheet" type="text/css" >
+    <link href="/styles/store.css" rel="stylesheet" type="text/css" >
     <link href="https://fonts.googleapis.com/css?family=Asap:400,700" rel="stylesheet" type="text/css">
 </head>
 
@@ -14,9 +14,23 @@
     {{> header}}
 
     <section class="banner">
-        <img src="Imagenes/T2/MOVIL/banner.png" style="width: 100%;" alt="">
+        <img src="/Imagenes/T2/MOVIL/banner.png" style="width: 100%;" alt="">
     </section>
 
+    <section class="filtros">
+        <h3 class="titu">FILTROS:</h2>
+        <div class="estilos">
+            <h2>Estilo</h2>
+            <input class="inp" data-name="GHOST" type="checkbox" name="GHOST"> GHOST
+            <input class="inp" data-name="DARK" type="checkbox" name="DARK"> DARK
+            <input class="inp" data-name="HORROR" type="checkbox" name="HORROR"> HORROR
+        </div>
+        <div class="precio">
+            <h2>Precio</h2>
+            <input class="inpPre" type="number" min="20000" max="100000" value="20000">
+            <button  class="btnPre">Enviar</button>
+        </div>
+    </section>
     <section class="productos">
         {{#each tipos}}
         <article class="preCollapsible">
@@ -25,7 +39,7 @@
                 {{#each array }}
                 <div data-name={{nombre}} class="producto">
                     <article>
-                        <img src="{{url}}" alt="{{nombre}}" style="width: 100%;">
+                        <img src="/{{url}}" alt="{{nombre}}" style="width: 100%;">
                     </article>
                     <h2>{{nombre}}</br>$ {{precio}}</h2>
                 </div>
@@ -41,6 +55,6 @@
 <footer>
     {{> foot }}
 </footer>
-<script src="scripts/store.js"></script>
+<script src="/scripts/store.js"></script>
 
 </html>
